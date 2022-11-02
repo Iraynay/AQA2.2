@@ -1,9 +1,9 @@
+import io.restassured.http.ContentType;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
 import static io.restassured.RestAssured.when;
-import static org.hamcrest.Matchers.equalTo;
-
+import static org.hamcrest.Matchers.*;
 
 public class postTest {
     @Test
@@ -13,19 +13,15 @@ public class postTest {
 // Предусловия
         given()
                 .baseUri("https://postman-echo.com")
-                .body ({
-                        "currency":"RUB",
-                "id":0
-        })
+               .body ("currency")
 // Выполняемые действия
-        when()
+                .when()
                 .post("/post")
 // Проверки
         .then()
-                .statusCode(200)
-                .body(".currency", equalTo("RUB"))
+              .statusCode(200)
+                .contentType(ContentType.JSON)
         ;
 
     }
-            ;
 }
