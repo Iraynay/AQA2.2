@@ -21,7 +21,7 @@ public class postTest {
         .then()
               .statusCode(200)
                 .contentType(ContentType.JSON)
-                .body("data", equalTo("curren"))
+                .body("data", equalTo("currency"))
         ;
 
     }
